@@ -1,0 +1,55 @@
+.TH MANTA-RENAME 1 "manta-rename v1.0.0" "Manta Tools" "User Commands"
+.SH NAME
+manta-rename \- bulk file rename utility with pattern matching
+.SH SYNOPSIS
+.B rename [options] <files...>
+.SH DESCRIPTION
+Rename files using patterns: prefix, suffix, string replacement, or regex substitution. Supports dry-run mode. Zero external dependencies.
+.SH OPTIONS
+.TP
+.B files...
+Files to rename
+.TP
+.B -p, --prefix TEXT
+Add prefix to filenames
+.TP
+.B -s, --suffix TEXT
+Add suffix to filenames
+.TP
+.B -r, --replace OLD=NEW
+Replace text in filenames
+.TP
+.B --regex PATTERN=REPL
+Regex substitution in filenames
+.TP
+.B -n, --dry-run
+Show what would be renamed without doing it
+.TP
+.B --version
+Show version and exit
+.SH EXAMPLES
+.TP
+Add prefix
+.B rename -p 'draft_' *.md
+.TP
+Replace text
+.B rename -r 'old=new' *.txt
+.TP
+Regex rename
+.B rename --regex '(\ed+)=backup-\e1' *.log
+.TP
+Dry run first
+.B rename -n -p 'prod_' *.config
+.SH EXIT CODES
+.TP
+.B 0
+Success (all files renamed)
+.TP
+.B 1
+Error or no transforms specified
+.SH AUTHOR
+Bobby Hansen Jr. (Hansen Capital Group LLC)
+.SH REPORTING BUGS
+https://github.com/jrbobbyhansen-pixel/rename/issues
+.SH COPYRIGHT
+Copyright 2026 Hansen Capital Group LLC. License MIT.
